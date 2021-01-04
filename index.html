@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
  <head>
      <meta charset="UTF-8">
@@ -13,7 +13,21 @@
                   <h1> Temperature Ambiante <span class="orange">. </span> </h1>
                   <nav>
                       <ul>
-                          <li><a href="#image-principal">Accueil</a></li>
+                        <!-- <li><a href="#image-principal">Accueil</a></li>--> 
+
+                        
+                        <script type="text/javascript" src="serveur1.js"></script>
+            <span id="date_heure"></span>
+                       <script type="text/javascript">window.onload = date_heure('date_heure');</script>
+
+
+
+
+
+
+
+
+
                         
                       </ul>
                   </nav>
@@ -24,9 +38,15 @@
          
           <section id="image-principal">
             <div class="container-invisible">
-               <h2> <strong>METEO </strong></h2>
+               <h2> <strong>Aujourd'hui
+                           <p>A</p>
+              </strong></h2>
+                            
+                        
                        <!-- <a href="#etap1" class="button-1"> Par ICI</a> -->
-                    <span id="tmp" class="button-1"></span>
+                    <span id="tmp" class="button-1"> </span> 
+
+                    <span id="date_heure"></span>
                 
             </div>
               
@@ -97,13 +117,18 @@
         </footer>
 
         <script>
-          var socket = new WebSocket('ws://localhost:8081');// mettre l'address du serveur socket pour etablir la connexion
+
+
+          var socket = new WebSocket('ws://localhost:8082');// mettre l'address du serveur socket pour etablir la connexion
           socket.addEventListener("open",()=>console.log("you are connected"))
           socket.onmessage=function(event){// recuperer le message envoyer par le serveur
               //var message = JSON.parse(event.data);// convertir le tableau d'objet en fichier json
               console.log(event.data)
-              document.getElementById('tmp').innerHTML=event.data
+              document.getElementById('tmp').innerHTML=event.data +"°C"
           }
+
+    
+
         </script>
  </body>
  </html>
