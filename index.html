@@ -25,8 +25,8 @@
           <section id="image-principal">
             <div class="container-invisible">
                <h2> <strong>METEO </strong></h2>
-                       <a href="#etap1" class="button-1"> Par ICI</a>
-
+                       <!-- <a href="#etap1" class="button-1"> Par ICI</a> -->
+                    <span id="tmp" class="button-1"></span>
                 
             </div>
               
@@ -95,5 +95,15 @@
               </div>
             </div>
         </footer>
+
+        <script>
+          var socket = new WebSocket('ws://localhost:8081');// mettre l'address du serveur socket pour etablir la connexion
+          socket.addEventListener("open",()=>console.log("you are connected"))
+          socket.onmessage=function(event){// recuperer le message envoyer par le serveur
+              //var message = JSON.parse(event.data);// convertir le tableau d'objet en fichier json
+              console.log(event.data)
+              document.getElementById('tmp').innerHTML=event.data
+          }
+        </script>
  </body>
  </html>
