@@ -10,45 +10,29 @@
  <body>
           <header>
               <div class="container-invisible">
-                  <h1> Temperature Ambiante <span class="orange">. </span> </h1>
-                  <nav>
-                      <ul>
-                        <!-- <li><a href="#image-principal">Accueil</a></li>--> 
-
-                        
-                        <script type="text/javascript" src="serveur1.js"></script>
-            <span id="date_heure"></span>
-                       <script type="text/javascript">window.onload = date_heure('date_heure');</script>
-
-
-
-
-
-
-
-
-
-                        
-                      </ul>
-                  </nav>
-
+                  <h1 class="entete"> Temperature Ambiante </h1>
+                  
               </div>
           </header> 
             
          
           <section id="image-principal">
-            <div class="container-invisible">
-               <h2> <strong>Aujourd'hui
-                           <p>A</p>
-              </strong></h2>
-                            
-                        
-                       <!-- <a href="#etap1" class="button-1"> Par ICI</a> -->
-                    <span id="tmp" class="button-1"> </span> 
-
-                    <span id="date_heure"></span>
+            <div >
+               <h2> 
+                 <!-- affichage du jour -->
+                 <div id="date"></div>
+                 <!-- affichage de l'heure -->
+                <div id="heure"></div>  
+                <!-- affichage de la temperature -->
+              </h2> 
+            </div> 
                 
+            <div class="info">
+                  <span id="tmp"></span >
+                  <span class="cel">°C</span> 
+                <span id="image"> </span> 
             </div>
+            
               
           </section>
           
@@ -56,19 +40,13 @@
             <div class="container-invisible">
                   <ul>
                     <li id="etap1">
-                      <h4>Temperature<26</h4>
-
-                       <p><h5>Temperature actuelle</h5>
-                       </p>
-                       
+                      <h4>Temperature inferieur a 26°C</h4>
                     </li>
                     <li id="etap2">
-                      <h4>Temperature</h4>
-                   <p> situatin  </p> 
+                       
                     </li> 
                     <li id="etap3">
-                      <h4>Temperature>26°C</h4>
-                      <p>     temperature superieur a 26°C    </p>
+                      <h4>Temperature superieur a 26°C</h4>
                     </li>
                     <div class="clear"></div>
                   </ul>
@@ -77,22 +55,7 @@
           </section>
 
 
-          <section id="possibilitie">
-            <div class="container-invisible">
-              <article style="background-image: url(image/55.jpeg);">
-              
-                         
-              </article>
-              <article style="background-image:url(image/63.jpeg);">
-               
-
-              </article>
-              <div class="clear"></div>
-
-
-            </div>
-
-          </section>
+          
           <section id="contact">
             <div class="container-invisible">
               <h3>Contactez-nous</h3>
@@ -103,7 +66,8 @@
              <input type="text" id="name" placeholder="votre nom">
              <label for="email">Email</label>
              <input type="text"id="email" placeholder="votre email">
-             <input type="submit" value="OK" class ="button-3">
+             <!-- <input type="submit" value="ENVOYER" class ="button-3"> -->
+             <button class ="button-3">ENVOYER</button>
            </form>
             </div>
 
@@ -115,6 +79,13 @@
               </div>
             </div>
         </footer>
+        
+        <script type="text/javascript" src="script.js"></script>
+        
+                   <script type="text/javascript">
+                   date = date_heure();
+                   window.onload =date
+                  </script>
 
         <script>
 
@@ -123,8 +94,14 @@
           socket.addEventListener("open",()=>console.log("you are connected"))
           socket.onmessage=function(event){// recuperer le message envoyer par le serveur
               //var message = JSON.parse(event.data);// convertir le tableau d'objet en fichier json
-              console.log(event.data)
-              document.getElementById('tmp').innerHTML=event.data +"°C"
+              donne=event.data// stockage de la temperature dans la variable donne
+              donne=parseInt(donne)//convertion de la temperature en entier
+              document.getElementById('tmp').innerHTML=donne
+              if(donne>26){
+                document.getElementById('image').innerHTML='<img src="image/soleil1.png" alt="chaleur">'
+              }
+              else
+                document.getElementById('image').innerHTML='<img src="image/tmp.png" alt="chaleur">'
           }
 
     
