@@ -1,0 +1,131 @@
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body 
+{
+    font-family: Arial,sans-serif;
+        font-size:5px;
+    }      
+h1
+{
+    
+font-family: serif;
+font-size: 45px;
+color: #444;
+}
+h2
+{
+    float: left;
+    color: #444;
+    font-size: 55px;
+}
+
+p
+{
+     line-height: 20px;
+     color: #777; 
+}
+ul
+{ 
+    list-style-type: none;
+    
+}
+a
+{
+    text-decoration: none;
+    color: #444;
+}
+.wrapper
+{ 
+    width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+header
+{
+height: 120px;
+}
+header h1
+{
+    float: left; 
+    margin-top:32px ;
+}
+header nav
+{
+    float: right;
+    margin-top: 50px;
+}
+header nav ul li
+{ 
+  
+ display: inline-block;
+ 
+}
+header nav ul li p 
+{
+    float: left;
+     text-transform: uppercase;
+    font-weight:bold ;
+    margin-right: 20px;
+    font-size: 10px;
+}
+#main-image
+{
+    height: 580px;
+    background:url("images/ciel.jpg") center;
+}
+#main-image h2
+{
+font-weight: normal;
+text-transform: uppercase;
+text-align: center;
+}
+img
+{   
+    margin: auto;
+    float: left;
+    height: 200px;
+    width: 200px;
+    left: 200px;
+    right: 200px;
+}
+h2 h2 img
+{
+    margin: auto;
+    float: right;
+    height: 400px;
+    width: 400px;
+    left: 400px;
+    right: 40px;
+}
+footer
+{
+    height:260px ;
+    font-weight: bold;
+    padding-top: 30px;
+    background-color:#444;
+}
+footer h1 
+{
+text-align: center;
+color: #fff;
+padding-top: 80px;
+}
+button
+{
+    
+    text-align: center;
+}
+button :hover
+{
+    
+    background-color:red;
+    clear: #fff;
+}
+
+
+
+
