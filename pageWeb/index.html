@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Detecteur de temperature </title>
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://fonts.google.com/specimen/Anton">
+ </head>
+ <body>
+          <header>
+              <div class="container-invisible">
+                  <h1 class="entete"> Temperature Ambiante </h1>
+                  
+              </div>
+          </header> 
+            
+         
+          <section id="image-principal">
+            <div >
+               <h2> 
+                 <!-- affichage du jour -->
+                 <div id="date"></div>
+                 <!-- affichage de l'heure -->
+                <div id="heure"></div>  
+                <!-- affichage de la temperature -->
+              </h2> 
+            </div> 
+                
+            <div class="info">
+                  <span id="tmp"></span >
+                  <span class="cel">°C</span> 
+                <span id="image"> </span> 
+            </div>
+            
+              
+          </section>
+          
+          <section id="Etapes">
+            <div class="container-invisible">
+                  <ul>
+                    <li id="etap1">
+                      <h4>Temperature inferieur a 26°C</h4>
+                    </li>
+                    <li id="etap2">
+                       
+                    </li> 
+                    <li id="etap3">
+                      <h4>Temperature superieur a 26°C</h4>
+                    </li>
+                    <div class="clear"></div>
+                  </ul>
+            </div>
+              
+          </section>
+
+
+          
+          <section id="contact">
+            <div class="container-invisible">
+              <h3>Contactez-nous</h3>
+           <p>Simplon ADEFNIPA pour vous servir 
+           </p>
+           <form>
+             <label for="name">Nom</label>
+             <input type="text" id="name" placeholder="votre nom">
+             <label for="email">Email</label>
+             <input type="text"id="email" placeholder="votre email">
+             <!-- <input type="submit" value="ENVOYER" class ="button-3"> -->
+             <button class ="button-3">ENVOYER</button>
+           </form>
+            </div>
+
+          </section>
+          <footer>
+            <div class="container-invisible">
+              <h1>Simplon ADEFNIPA <span class="orange">.</span></h1>
+              <div class="copyright">Copyright @ 2021. Tous droits reverves.
+              </div>
+            </div>
+        </footer>
+        
+        <script type="text/javascript" src="script.js"></script>
+        
+                   <script type="text/javascript">
+                   date = date_heure();
+                   window.onload =date
+                  </script>
+
+        <script>
+
+
+          var socket = new WebSocket('ws://localhost:8082');// mettre l'address du serveur socket pour etablir la connexion
+          socket.addEventListener("open",()=>console.log("you are connected"))
+          socket.onmessage=function(event){// recuperer le message envoyer par le serveur
+              //var message = JSON.parse(event.data);// convertir le tableau d'objet en fichier json
+              donne=event.data// stockage de la temperature dans la variable donne
+              donne=parseInt(donne)//convertion de la temperature en entier
+              document.getElementById('tmp').innerHTML=donne
+              if(donne>26){
+                document.getElementById('image').innerHTML='<img src="image/soleil1.png" alt="chaleur">'
+              }
+              else
+                document.getElementById('image').innerHTML='<img src="image/tmp.png" alt="chaleur">'
+          }
+
+    
+
+        </script>
+ </body>
+ </html>
