@@ -1,0 +1,260 @@
+/* General */
+*{
+    margin:0 ;
+    padding: 0;
+}
+body{
+    font-family: Arial, sans-serif;
+    font-size : 15px ;
+}
+.container-invisible{
+    width: 940px;
+    margin:0 auto ;
+    padding: 0 10px;
+}
+h1 ,h2, h3, h4 {
+    color: rgb(14, 13, 13);
+}
+h1{
+    font-family: 'specimen Anton' serif;
+    font-size: 45px;
+    
+}
+h2{
+   
+    font-size: 55px;
+}
+h3{
+    font-size: 24px;
+ 
+}
+h4{
+    font-size: 24px;
+    
+}
+p{
+    line-height: 20px;
+    color: #777;
+}
+ul{
+    list-style:none;
+}
+a{
+    text-decoration: none;
+    color: #444;
+}
+small{
+    font-size: 13px;
+    font-style: italic;
+
+}
+.orange{
+    color: #ff7a00;
+} 
+.clear{
+    clear: both;
+}
+
+/* Header */
+header{
+    height: 120px;
+    background-color: #444;
+    
+}
+header h1{
+    float: left ;
+    margin-top:32px;
+    color: #fff;
+    text-align:center;
+}
+
+
+/* image principale */
+
+#image-principal{
+    height: 800px;
+    background:url('image/mi.jpg') center ;
+}
+#image-principal h2{
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 150px 0 40px 0;
+    
+
+}
+
+/* Etape */
+
+
+#Etapes ul {
+ margin: 80px 0 ;
+}
+#Etapes ul li {
+    width: 300px;
+    float: left;
+    padding-top: 220px;
+    text-align: center;
+    margin-right: 10px;
+
+}
+#Etapes h4{
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+#Etapes ul li h4 p{
+margin-bottom: 20px;
+}
+#etap1
+{ background:url('image/tmp.png') no-repeat top center ; 
+
+}
+
+#etap3{
+    background:url('image/soleil1.png') no-repeat top center ; 
+
+}
+#Etapes{
+    background-color: #efefef;
+}
+/* possibilities */
+
+ article{
+    width: 460px;
+   height: 100px;
+   float: left;
+   border-radius: 10px;
+
+}
+article:first-child
+{
+    margin-right:20px;
+}
+
+
+
+#possibilitie p {
+    text-align:center;
+    margin-bottom: 20px;
+}
+.button-2{
+    color:#fff ;
+    background-color: #ff7a00;
+    padding : 6px 20px ;
+    border-radius: 3px;
+}
+.button-2:hover{
+    background-color:#02b8dd ;
+}
+
+/* Contact */
+#contact{
+    padding: 60px 0 ;
+    text-align: center;
+}
+#contact h3{
+
+width: 400px;
+    text-transform: uppercase;
+    margin: 0 auto 20px auto ;
+    border-bottom: 1px solid #0d2d52;
+    padding-bottom: 20px;
+}
+form{
+    margin: 60px 0 20px 0;
+}
+label{
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+      color: #777;
+}
+input[type="text"]{
+    padding: 10px;
+    font-size: 20px;
+    margin-right: 20px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+
+}
+.button-3{
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #fff;
+    padding:10px;
+    border-radius: 10px;
+    transition: all 0.5s ease-in;
+}
+.button-3:hover{
+    color:white;
+    background-color: black;
+}
+
+/* footer */
+footer{
+
+    height: 260px;
+    background-color: #444;
+}
+footer h1{
+    color: #fff;
+    text-align: center;
+    padding-top: 80px;
+}
+ .copyright{
+     text-align: center;
+     font-weight: bold;
+     padding-top: 30px; 
+     color: #777;
+ }
+ 
+ .entete{
+     text-align: center;
+ }
+ #heure{
+     text-align: center;
+ }
+ #tmp{
+
+     font-size: 20px;
+ }
+ 
+ .info {
+     margin-left: 350px;
+     float: center;
+     color: black;
+ }
+
+ .info .cel{
+     color: black;
+     font-size: 100px;
+ }
+ .info .hume {
+    color: black;
+    font-size: 100px;
+    
+ }
+ .lef{ text-align: center;
+    color: black;
+    font-size: 50px;
+   
+ }
+ .info #tmp{
+    color: black;
+    font-size: 200px;
+}
+.info #image{
+    padding-left: 200px;
+    float: center;
+}
+table {
+    margin-top: 35px ;
+    border-color:black;
+    width:100%;
+    text-align: center;
+    background-color: #efefef; 
+    }
+   /*  .separation{
+        border:solid black 1px ;
+    } */
