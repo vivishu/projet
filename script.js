@@ -9,7 +9,7 @@ function date_heure()
         jours = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
         h = date.getHours();
         if(h<10)
-        {
+        {resultat
                 h = "0"+h;
         }
         m = date.getMinutes();
@@ -28,5 +28,9 @@ function date_heure()
         document.getElementById('heure').innerHTML = heure;
         setTimeout('date_heure("date");','1000');
         setTimeout('date_heure("heure");','1000');
-        return resultat;
+
+        res.render('index.js',{date_heure: date_heure});
+
+
+        return ;
 }

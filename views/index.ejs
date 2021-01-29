@@ -5,8 +5,8 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Detecteur de temperature </title>
      <link rel="stylesheet" href="style.css">
-     <link rel="stylesheet" href="https://fonts.google.com/specimen/Anton">
- </head>
+<!--      <link rel="stylesheet" href="https://fonts.google.com/specimen/Anton">
+ --> </head>
  <body>
           <header>
               <div class="container-invisible">
@@ -27,16 +27,29 @@
               </h2> 
             </div> 
               
-                  <div class="info">
-                    <span id="tmp"></span >
-                      <span id="Hume"></span >
+                  <div id="info">
+                     <h1>TEMPERATURE</h1>
+                     <h1>HUMIDITE</h1>
 
-                    <span class="cel">°C</span><br>
-                  <span class="hume">g/m3</span> 
-                    
-                  <span id="image"> </span> 
+                    <h3 id="tmp"></h3>
+                    <h3 id="Hume"></h3>
+                      
+                    <div id="image"> </div> 
                    </div>
+
+                   <div id="info_moy">
+                    <h1>TEMPERATURE-MOYENNE</h1>
+                    <h1>HUMIDITE-MOYENNE</h1>
+
+                   <h3 id="tmp_moy"></h3>
+                   <h3 id="Hume_moy"></h3>
+                     
+                   <div id="image"> </div> 
+                  </div>
             
+                   <!--
+                     envois des dala temperature dans la base de donnée
+                   -->
              
         
           </section>
@@ -51,60 +64,30 @@
                 </tr>
                 <tr>
                   <td> 8h</td>
-                  <td> 25°C</td>
-                  <td> 30g/m3</td>
+                  <td id="tmp8h"></td>
+                  <td id="humidity8h"></td>
                 </tr>
                 <tr>
                   <td> 12h</td>
-                  <td> 25°C</td>
-                  <td> 41g/m3</td>
+                  <td id="tmp12h"></td>
+                  <td id="humidity12h"></td>
                 </tr>
                 <tr>
                   <td> 19h</td>
-                  <td> 30°C</td>
-                  <td> 14g/m3</td>
+                  <td id="tmp19h"></td>
+                  <td id="humidity19h"></td>
                 </tr>
-              <div class="separation">
-
-              </div>
-              <div>
-                <tr><th>
-                Temperature Moyenne:
-             </th></tr>
-             <tr><th>Humidite Moyenne:</th></tr>
-             </div>
-                
-              </table>
-             
-
-            </div>
-
-          </section>
-         <!--  <section id="Etapes">
-            <div class="container-invisible">
-                  <ul>
-                    <li id="etap1">
-                      <h4>Temperature inferieur a 26°C</h4>
-                    </li>
-                    <li id="etap2">
-                       
-                    </li> 
-                    <li id="etap3">
-                      <h4>Temperature superieur a 26°C</h4>
-                    </li>
-                    <div class="clear"></div>
-                  </ul>
-            </div>
               
-          </section>
- -->
-
+              </table>
           
+            </div>
+
+          </section>
+         
           <section id="contact">
             <div class="container-invisible">
               <h3>Contactez-nous</h3>
-           <p>Simplon ADEFNIPA pour vous servir 
-           </p>
+           <p>Simplon ADEFNIPA pour vous servir</p>
            <form>
              <label for="name">Nom</label>
              <input type="text" id="name" placeholder="votre nom">
@@ -138,10 +121,11 @@
           socket.addEventListener("open",()=>console.log("you are connected"))
           socket.onmessage=function(event){// recuperer le message envoyer par le serveur
               //var message = JSON.parse(event.data);// convertir le tableau d'objet en fichier json
-              donne=event.data// stockage de la temperature dans la variable donne
-              donne=parseInt(donne)//convertion de la temperature en entier
-              document.getElementById('tmp').innerHTML=donne
-              document.getElementById('hume').innerHTML=donne
+              var donne = event.data// stockage de la temperature dans la variable donne
+              var temp = donne.slice(0,5)
+              var humidite = donne.slice(5,10)
+              document.getElementById('tmp').innerHTML=temp
+              document.getElementById('Hume').innerHTML=humidite
               if(donne>26){
                 document.getElementById('image').innerHTML='<img src="image/soleil1.png" alt="chaleur">'
               }
@@ -149,9 +133,56 @@
                 document.getElementById('image').innerHTML='<img src="image/tmp.png" alt="chaleur">'
           }
 
-    
+          var tempMoy = []
+          var humpMoy = []          
+          tmp.innerHTML = temp + "°C";
+          hum.innerHTML = humidite + "%";            
+          console.log(my_temp);        
+            //temperature et humidite 8h, 12h et 19
+              var temp_moyenne = document.getElementById('tmp_moy')
+              var hum_moyenne = document.getElementById('Hume_moy')
+          if (heure.getHours() == 08 && heure.getMinutes()== 00) {
+              var tmp8h = document.getElementById('tmp8h')
+              var humidity8h = document.getElementById('humidity8h')
+              tmp8h.innerHTML = temp + "°C";
+              humidity8h.innerHTML = humidite + "%";
+              tempMoy.push(temp)
+              humpMoy.push(humidite)          
+            }else if (heure.getHours() == 12 && heure.getMinutes()== 00) {
+              var tmp12h = document.getElementById('tmp12h')
+              var humidity12h = document.getElementById('humidity12h')
+              tmp12h.innerHTML = temp + "°C";
+              humidity12h.innerHTML = humidite + "%";
+              tempMoy.push(temp)
+              humpMoy.push(humidite)          
+            }
+              else if (heure.getHours() == 20 && heure.getMinutes()== 42) {
+              var tmp19h = document.getElementById('tmp19h')
+              var humidity19h = document.getElementById('humidity19h')
+              tmp19h.innerHTML = tmp + "°C";
+              humidity19h.innerHTML = humidite + "%";
+              tempMoy.push(temp)
+              humpMoy.push(humidite)              
+              //temperature et humidite moyenne
+              for (let i = 0; i < 3; i++) {
+                let somme1 = 0;
+                var moy_tmp = 0;
+                somme1 = somme1 + tempMoy[i]
+                moy_tmp = somme1 / 3;
+              }
+              for (let i = 0; i < 3; i++) {
+                let somme2 = 0;
+                var moy_hum = 0;
+                somme2 = somme2 + humpMoy[i]
+                moy_hum = somme2 / 3;
+              }
+              temp_moyenne.innerHTML = moy_tmp + "°C"
+              hum_moyenne.innerHTML = moy_hum + "%"              
+              tempMoy.splice(0,3)
+              humpMoy.splice(0,3)
+          }
 
         </script>
-    
+
  </body>
  </html>
